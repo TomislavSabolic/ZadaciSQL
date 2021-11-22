@@ -70,3 +70,4 @@ values (1,'Salon01',5),
        (3,'Salon03',1),
        (4,'Salon04',2),
        (5,'Salon05',4);
+    
