@@ -27,3 +27,7 @@ create table kustos (
     oib char(11),
     izlozba int not null
 );
+create table sponzor (
+    sifra int not null primary key auto_increment,
+    naziv varchar(50) not null
+);
