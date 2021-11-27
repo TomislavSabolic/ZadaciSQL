@@ -21,3 +21,17 @@ create table poslovi (
     naziv varchar(50),
     svecenici int not null
 );
+
+create table nadredeni (
+    sifra int not null primary key auto_increment,
+    ime varchar(50) not null,
+    prezime varchar(50) not null
+);
+
+
+alter table samostan add foreign key(svecenici) references svecenici(sifra);
+
+alter table svecenici add foreign key(poslovi) references svecenici(sifra);
+alter table svecenici add foreign key(nadredeni) references nadredeni(sifra);
+
+alter table poslovi add foreign key(svecenici) references svecenici(sifra);
