@@ -132,3 +132,33 @@ values  (22.22,'Plava',7,1),
         (44.55,'Crna',3,3);
        
 update svekar set suknja = 'Osijek';
+3 U tablici punica obrišite sve zapise čija je vrijednost kolone kratkamajica jednako AB.
+select * from snasa;
+insert into snasa(kuna,eura,ostavljena)
+values  (23.23,33.33,1),
+        (23.23,33.33,2),
+        (23.23,33.33,3);
+        
+select * from punica;       
+insert into punica(kuna,vesta,snasa)
+values  (33.11,'Zelena',1),
+        (22.21,'Crna',2),
+        (21.51,'Plava',3);
+        
+delete from punica where kratkamajica='AB';
+
+
+#5 Prikažite ekstroventno iz tablice brat, 
+#  vesta iz tablice punica 
+#  te kuna iz tablice snasa uz uvjet da su vrijednosti kolone lipa iz tablice ostavljena različito od 91 
+#  te da su vrijednosti kolone haljina iz tablice prijatelj sadrže niz znakova ba. 
+#  Podatke posložite po kuna iz tablice snasa silazno.
+select a.ekstrovertno, f.vesta , e.kuna 
+from brat a 
+inner join prijatelj_brat b on a.sifra     = b.brat
+inner join prijatelj      c on b.prijatelj = c.sifra
+inner join ostavljena     d on c.sifra     = d.prijatelj 
+inner join snasa          e on d.sifra     = e.ostavljena
+inner join punica         f on e.sifra     = f.snasa 
+where d.lipa != 91.00 and c.haljina like '%ba%'
+order by e.kuna desc;
